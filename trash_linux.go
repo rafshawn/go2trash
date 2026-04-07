@@ -1,4 +1,6 @@
-package ostrash
+//go:build linux
+
+package go2trash
 
 import (
 	"fmt"
@@ -49,7 +51,7 @@ func TrashItem(filePath string) error {
 	infoContent := fmt.Sprintf(
 		"[Trash Info]\nPath=%s\nDeletionDate=%s\n",
 		absPath,
-		trashTime(),
+		time.Now().Format("20060102T03:04:05"),
 	)
 
 	f, err := os.OpenFile(trashInfo, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0644)
@@ -77,9 +79,4 @@ func appendTime(name string) string {
 	timeStr := t.Format("03.04.05 PM")
 
 	return fileName + " " + timeStr + ext
-}
-
-// proper timestamp format for .trashinfo
-func trashTime() string {
-	return time.Now().Format("20060102T03:04:05")
 }

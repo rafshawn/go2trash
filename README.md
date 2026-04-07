@@ -43,8 +43,10 @@ It doesn't look like there's a way to build macOS apps without a mac, since the 
 [^4]
 
 ## Resources
+- [Calling C from Go](https://ericchiang.github.io/post/cgo/) (Eric Chiang)
+
 [^1]: **Linux**: [Trash Specifications v1.0 (FreeDesktop.org)](https://specifications.freedesktop.org/trash/latest/)
 [^2]: **macOS**: [Apple FileManager docs](https://developer.apple.com/documentation/foundation/filemanager/)
-[^3]: `trashItem()` method
+[^3]: NSFileManager [`trashItem()` method](https://developer.apple.com/documentation/foundation/filemanager/trashitem(at:resultingitemurl:))
 [^4]: **Windows**:
 - [Go Wiki: `cgo` Documentation](https://go.dev/wiki/cgo)
