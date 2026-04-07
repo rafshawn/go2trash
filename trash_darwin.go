@@ -34,7 +34,7 @@ import (
 	"unsafe"
 )
 
-func TrashItem(filePath string) error {
+func MoveToTrash(filePath string) error {
 	cPath := C.CString(filePath)
 	defer C.free(unsafe.Pointer(cPath))
 

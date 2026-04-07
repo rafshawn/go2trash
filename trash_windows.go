@@ -1,5 +1,5 @@
 package go2trash
 
-func TrashItem(filePath string) error {
+func MoveToTrash(filePath string) error {
 	return nil
 }

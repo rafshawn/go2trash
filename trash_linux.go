@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-func TrashItem(filePath string) error {
+func MoveToTrash(filePath string) error {
 	absPath, err := filepath.Abs(filePath)
 	if err != nil {
 		return fmt.Errorf("go2trash: cannot resolve absolute path: %w", err)
