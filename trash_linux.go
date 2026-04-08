@@ -10,6 +10,10 @@ import (
 	"time"
 )
 
+// MoveToTrash sends a file or directory to the FreeDesktop.org Trash.
+//
+// Creates a .trashinfo metadata file alongside the trashed file to
+// display and restore the file.
 func MoveToTrash(filePath string) error {
 	absPath, err := filepath.Abs(filePath)
 	if err != nil {

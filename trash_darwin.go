@@ -34,6 +34,10 @@ import (
 	"unsafe"
 )
 
+// MoveToTrash sends a file or directory to the macOS Trash.
+//
+// Uses NSFileManager's trashItemAtURL:resultingItemURL:error: method,
+// which is the official Apple API.
 func MoveToTrash(filePath string) error {
 	cPath := C.CString(filePath)
 	defer C.free(unsafe.Pointer(cPath))

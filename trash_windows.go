@@ -37,6 +37,10 @@ type _SHFILEOPSTRUCTW struct {
 	lpszProgressTitle     uintptr
 }
 
+// MoveToTrash sends a file or directory to the Windows Recycle Bin.
+//
+// Uses the SHFileOperationW API from Shell32.dll with the FOF_ALLOWUNDO
+// flag, which is the standard Win32 approach for Recycle Bin operations.
 func MoveToTrash(filePath string) error {
 	// SHFileOperationW expects double-null-terminated UTF-16 strings
 	utf16Path, err := windows.UTF16FromString(filePath)
