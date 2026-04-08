@@ -5,14 +5,17 @@
 //
 // # Platform Support
 //
-// macOS: Uses NSFileManager.trashItemAtURL (native Cocoa API via CGO).
+// ## macOS
+// Uses NSFileManager.trashItemAtURL (native Cocoa API via CGO).
 // Supports Finder "Put Back" functionality. No security prompts required.
 //
-// Linux: Follows the FreeDesktop.org Trash Specification 1.0.
+// ## Linux
+// Follows the FreeDesktop.org Trash Specification 1.0.
 // Files appear in GNOME Files, Dolphin, and other compliant file managers.
 // Creates .trashinfo metadata files for recovery.
 //
-// Windows: Uses SHFileOperationW via golang.org/x/sys/windows.
+// ## Windows
+// Uses SHFileOperationW via golang.org/x/sys/windows.
 // Pure syscall implementation with no CGO dependency. Sends files to the
 // Recycle Bin with no confirmation dialogs shown.
 //
