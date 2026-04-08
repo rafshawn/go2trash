@@ -11,8 +11,8 @@ Cross-platform OS trash integration for Go. Moves files to the native operating 
 | Platform | Implementation |
 |----------|---------------|
 | Linux | FreeDesktop.org Trash Specification 1.0[^1] |
-| macOS | `NSFileManager.trashItem`[^3] (macOS 10.8+) |
-| Windows | `SHFileOperationW`[^4] via `golang.org/x/sys/windows` |
+| macOS | `NSFileManager.trashItem`[^2] (macOS 10.8+) |
+| Windows | `SHFileOperationW`[^3] via `golang.org/x/sys/windows` |
 
 ## Installation
 
@@ -61,9 +61,10 @@ DeletionDate=20060102T03:04:05
 ```
 
 ### macOS
-[!IMPORTANT]: macOS builds require a Mac due to CGO and the Objective-C SDK dependency.
+> [!IMPORTANT]
+> macOS builds require a Mac due to CGO and the Objective-C SDK dependency.
 
-File operations are entirely handled by `NSFileManager`[^2] through CGO and Objective-C. The `trashItemAtURL` method moves files to the Trash without showing security prompts, and supports the Finder "Put Back" feature. GO just waits for a `return 0` on success or a `return -1` on failure.
+File operations are entirely handled by `NSFileManager`[^4] through CGO and Objective-C. The `trashItemAtURL` method moves files to the Trash without showing security prompts, and supports the Finder "Put Back" feature. GO just waits for a `return 0` on success or a `return -1` on failure.
 
 This means:
 - The file appears in Finder's Trash with full "Put Back" support
@@ -102,6 +103,7 @@ MIT License. See [LICENCE](LICENCE) for details.
 ## Resources
 - [Calling C from Go](https://ericchiang.github.io/post/cgo/) (Eric Chiang)
 - [Go Wiki: `cgo` Documentation](https://go.dev/wiki/cgo)
+- [Package windows (golang.org/x/sys)](https://pkg.go.dev/golang.org/x/sys/windows#AdjustTokenPrivileges)
 
 [^1]: **Linux**: [Trash Specifications v1.0 (FreeDesktop.org)](https://specifications.freedesktop.org/trash/latest/)
 [^2]: **macOS**: NSFileManager [`trashItem()` method](https://developer.apple.com/documentation/foundation/filemanager/trashitem(at:resultingitemurl:))
